@@ -11,6 +11,9 @@
 			"style": {
 				"navigationStyle": "custom"
 			}
+		},
+		{
+			"path": "pages/report-works/search/search"
 		}
 	],
 	"globalStyle": {
