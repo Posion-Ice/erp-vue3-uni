@@ -5,15 +5,30 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
-		},
+		}, 
+		// 登录页面
 		{
 			"path": "pages/login/login",
 			"style": {
 				"navigationStyle": "custom"
 			}
+		}, 
+		// 制造订单查询页面
+		{
+			"path": "pages/report-works/search/search",
+			"style": {
+				"navigationBarTitleText": "浙江华光汽车内饰股份有限公司"
+			}
+		}, 
+		// 前制造订单详情页面
+		{
+			"path": "pages/report-works/anterior/index/index",
+			"style": {
+				"navigationBarTitleText": "浙江华光汽车内饰股份有限公司"
+			}
 		},
 		{
-			"path": "pages/report-works/search/search"
+			"path": "pages/report-works/anterior/report/new/new"
 		}
 	],
 	"globalStyle": {

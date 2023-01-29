@@ -1,0 +1,52 @@
+page {
+	background-color: #ededed;
+	height: 100%;
+	width: 100%;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	
+	height: calc(100vh - var(--window-top));
+}
+
+.vk-header {
+	background: url('../../../../static/images/background/index.png') no-repeat center center;
+	background-size: 100% 100%;
+	width: 100%;
+	min-height: 170px;
+	margin: 0 auto;
+	background-repeat: no-repeat;
+	border-radius: $uni-border-radius-base;
+}
+
+.vk-button {
+	display: flex;
+	flex-direction: row;
+	justify-content: left;
+
+	height: 120rpx;
+	border-radius: 24rpx;
+	margin-top: $uni-spacing-col-lg;
+}
+
+.vk-button-view {
+	display: flex;
+	
+	text {
+		font-size: $uni-font-size-base;
+		
+		&::before { 
+			content: "  "; 
+			white-space: pre; 
+		}
+	}
+}
+
+.footer {
+	margin: auto;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+}
