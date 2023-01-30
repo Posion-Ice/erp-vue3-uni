@@ -24,7 +24,8 @@
         {
             "path": "pages/report-works/anterior/index/index",
             "style": {
-                "navigationBarTitleText": "浙江华光汽车内饰股份有限公司"
+                "navigationBarTitleText": "浙江华光汽车内饰股份有限公司",
+                "enablePullDownRefresh": true
             }
         },
         {
