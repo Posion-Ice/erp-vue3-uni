@@ -27,9 +27,10 @@
         // 若 error 存在，则需要提示报错信息
         if (error) return proxy.$errorMsg(error);
 
-        if (data.result.length === 0) return proxy.$warningMsg('系统中未查询到相应的订单信息');
+        if (data.length === 0) return proxy.$warningMsg('系统中未查询到相应的订单信息');
         // 将查询到的数据存储在缓存中
-        uni.setStorageSync('equipmentJob', data.result[0]);
+        console.log(JSON.stringify(data.records[0]))
+        await uni.setStorageSync('equipmentJob', data.records[0]);
 
         return proxy.$successMsg('查询成功', 3000, { url: '/pages/report-works/anterior/index/index' });
     }
