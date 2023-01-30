@@ -55,10 +55,10 @@
     // 自定义函数：登录功能
     async function login () {
         const [error, data] = await to(odooLogin(form.username, form.password));
-        if (error) console.log(error)
+        if (error) proxy.$errorMsg(error);
 
         // 跳转至主页页面
-
+        return proxy.$successMsg('登录成功', 3000, { url: '/pages/report-works/search/search' });
     }
 </script>
 

@@ -1,47 +1,52 @@
 import config from "@/config.js";
 import request from "@/utils/request.js";
-import to from 'await-to-js';
-
 
 // odoo 登录功能
-export function Login(params) {
-	var json = {
-		jsonrpc: '2.0',
-		params: {
-			db: config.odooDB,
-			login: params.username,
-			password: params.password
-		}
-	}
+export function Login (params) {
+    var json = {
+        jsonrpc: '2.0',
+        params: {
+            db: config.odooDB,
+            login: params.username,
+            password: params.password
+        }
+    }
 
-	return request.post(config.odooURL + '/web/session/authenticate', json)
+    return request.post(config.odooURL + '/web/session/authenticate', json)
 }
 
 // odoo 调用函数方法
-export function Call(params) {
+export async function Call (params) {
+    var json = {
+        jsonrpc: '2.0',
+        method: 'call',
+        id: 1,
+        params: {
+            model: params.model,
+            method: params.method,
+            args: params.args || [],
+            kwargs: params.kwargs || {}
+        }
+    }
 
+    return request.post(`${config.odooURL}/web/dataset/call_kw/${params.model}/${params.method}`, json)
 }
 
 // odoo 查询功能
-export async function Search(params) {
-	var json = {
-		jsonrpc: '2.0',
-		method: 'call',
-		id: 1,
-		params: {
-			model: params.model,
-			fields: params.fields || [],
-			domain: params.domain || [],
-			offset: params.offset,
-			sort: params.sort,
-			context: params.context || {}
-		}
-	}
+export async function Search (params) {
+    var json = {
+        jsonrpc: '2.0',
+        method: 'call',
+        id: 1,
+        params: {
+            model: params.model,
+            fields: params.fields || [],
+            domain: params.domain || [],
+            offset: params.offset,
+            sort: params.sort,
+            context: params.context || {}
+        }
+    }
 
-	var [error, data] = to(await request.post(config.odooURL + '/web/dataset/search_read', json));
-	if (error) throw error;
-	
-	if (data.hasOwnProperty('error')) throw data.error.data.message;
-	
-	return data
+    return request.post(config.odooURL + '/web/dataset/search_read', json)
 }
